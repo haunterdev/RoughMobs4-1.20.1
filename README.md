@@ -63,7 +63,7 @@ and give off a poison fog.
 
 ## Configuration
 
-Everything is in `config/roughmobs4.toml`, with Rough Mobs Revamped's option names and defaults.
+Everything is in `config/roughmobs4.toml`, with Rough Mobs Revamped's option names.
 
 To use an old config, put a Rough Mobs 2 `roughmobs.cfg` or a Rough Mobs Revamped 1.12.2 `roughmobsrevamped.cfg` in
 `config/` and set `_ClassicImportLegacyConfig` to its file name.
