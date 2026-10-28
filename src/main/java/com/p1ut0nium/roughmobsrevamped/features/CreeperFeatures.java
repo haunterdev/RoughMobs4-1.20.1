@@ -30,7 +30,7 @@ public class CreeperFeatures extends EntityFeatures {
 		super.initConfig();
 
 		invisibleRange = RoughConfig.getFloat(name, "InvisibleRange", 6F, 0, MAX, "Block range to the target in which %ss become invisible\nSet to 0 to prevent %ss from becoming invisible");
-		// RM1: creeperParticle (3 in RM1, set by the rm1 Classic Preset; 0 keeps Revamped's fully invisible creeper)
+		// CHANGED: new in Rough Mobs 4 (3 in the classic Classic Preset; 0 keeps Revamped's fully invisible creeper)
 		invisibleParticles = RoughConfig.getInteger(name, "InvisibleParticles", 0, 0, 50, "Green particles per tick around an invisible %s, so it can still be spotted\nSet to 0 for a fully invisible %s");
 		fuseTime = RoughConfig.getInteger(name, "FuseTime", 20, 0, MAX, "Creeper fuse time (In ticks, 20 ticks = 1 second)\nThe vanilla default is 30");
 		explosionRadius = RoughConfig.getInteger(name, "ExplosionRadius", 4, 0, MAX, "Creeper explosion radius\nThe vanilla default is 3");

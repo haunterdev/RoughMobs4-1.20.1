@@ -52,17 +52,16 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /*
- * CHANGED: new in Rough Mobs 4. Features Rough Mobs 1 and 2 had and Rough Mobs Revamped dropped, as Forge-bus
- * handlers (see docs/research/briefs/2026-10-26-rough-mobs-lineage-features.md, items B1 to B13):
- *   slime OnHead / OnHeadNausea   small slimes and magma cubes ride the player's head (RM1 slimeOnHead)
- *   bat Vampire                   vanilla bats ride the player and drink half a heart a second (RM1 batVampire)
- *   Classic SnowballMeltInNether  snowballs fizz out in ultra-warm dimensions (RM1 snowballMeltInNether)
- *   zombie BossBabyChance         a hit boss zombie calls a baby zombie (RM1 zombieBossBabyChance)
- *   skeleton BossExplosion        a boss skeleton's hit explodes at the player (RM1 skeletonBossExplosion)
- *   Classic FireImmune            listed mobs ignore fire damage (RM1 mobsImmuneToFire)
- *   Classic ReduceSpawns          cancels a share of natural spawns per mob and dimension (RM1 reduceSpawnRates)
- * The Classic Preset itself is read in RoughApplier.loadConfig. Smaller restorations live in their feature class,
- * marked "RM1:" or "RM2:".
+ * CHANGED: new in Rough Mobs 4. Features Rough Mobs Revamped does not have, as Forge-bus handlers:
+ *   slime OnHead / OnHeadNausea   small slimes and magma cubes ride the player's head
+ *   bat Vampire                   vanilla bats ride the player and drink half a heart a second
+ *   Classic SnowballMeltInNether  snowballs fizz out in ultra-warm dimensions
+ *   zombie BossBabyChance         a hit boss zombie calls a baby zombie
+ *   skeleton BossExplosion        a boss skeleton's hit explodes at the player
+ *   Classic FireImmune            listed mobs ignore fire damage
+ *   Classic ReduceSpawns          cancels a share of natural spawns per mob and dimension
+ * The Classic Preset itself is read in RoughApplier.loadConfig. Smaller additions live in their feature class,
+ * marked "CHANGED: new in Rough Mobs 4".
  */
 public class ClassicFeatures {
 
@@ -88,9 +87,9 @@ public class ClassicFeatures {
 	public void initConfig() {
 		RoughConfig.addCustomCategoryComment("bat", "Configuration options which affect vanilla bats");
 
-		slimeOnHead = RoughConfig.getBoolean("slime", "OnHead", false, "Set to true to let the smallest slimes and magma cubes jump onto a player's head and ride it (Rough Mobs 1)");
+		slimeOnHead = RoughConfig.getBoolean("slime", "OnHead", false, "Set to true to let the smallest slimes and magma cubes jump onto a player's head and ride it");
 		slimeOnHeadNausea = RoughConfig.getBoolean("slime", "OnHeadNausea", true, "Set to false to keep the nausea off while a slime rides a player's head\nThe rider still slows the player down");
-		batVampire = RoughConfig.getBoolean("bat", "Vampire", false, "Set to true to let bats latch onto players and drink half a heart every second until killed (Rough Mobs 1)");
+		batVampire = RoughConfig.getBoolean("bat", "Vampire", false, "Set to true to let bats latch onto players and drink half a heart every second until killed");
 		zombieBossBabyChance = RoughConfig.getInteger("zombie", "BossBabyChance", 5, 0, Short.MAX_VALUE, "Chance (1 in X) per hit taken that a boss zombie calls a baby zombie to its side\nSet to 0 to disable this feature");
 		skeletonBossExplosion = RoughConfig.getFloat("skeleton", "BossExplosion", 1.0F, 0F, 10F, "Strength of the explosion a boss skeleton's hit sets off at the player\nSet to 0 to disable this feature");
 
@@ -139,7 +138,7 @@ public class ClassicFeatures {
 		return ForgeRegistries.ENTITY_TYPES.getValue(key);
 	}
 
-	// RM1 named dimensions by number
+	// Old configs named dimensions by number
 	private static ResourceLocation dimension(String name) {
 		switch (name) {
 			case "-1": return Level.NETHER.location();
@@ -164,7 +163,7 @@ public class ClassicFeatures {
 	}
 
 	/*
-	 * RM1 SlimeEvents.onUpdate and BatEvents.onUpdate: the rider mounts a player whose box it touches, then works
+	 * The rider mounts a player whose box it touches, then works
 	 * on the player every interval ticks. It lets go once the player dies, leaves, switches to creative or
 	 * spectator, or already carries something else.
 	 */
@@ -192,7 +191,7 @@ public class ClassicFeatures {
 	/*
 	 * CHANGED: new in Rough Mobs 4. Vanilla saves the vehicle a player rides, never the player's passengers, so a
 	 * rider was let go at logout. It is saved with the player (PlayerPersisted, RIDERS) and put back at login. A
-	 * dimension change still leaves it behind: vanilla ejects passengers on teleport, as in Rough Mobs 1.
+	 * dimension change still leaves it behind: vanilla ejects passengers on teleport.
 	 */
 	@SubscribeEvent
 	public void onLogout(PlayerEvent.PlayerLoggedOutEvent event) {
@@ -263,7 +262,7 @@ public class ClassicFeatures {
 		if (rider instanceof Bat) {
 			player.hurt(rider.damageSources().mobAttack(rider), 0.5F);
 			((ServerLevel) rider.level()).sendParticles(ParticleTypes.DAMAGE_INDICATOR, player.getX(), player.getY(0.5D), player.getZ(), 3, 0.2D, 0.2D, 0.2D, 0.0D);
-			// RM1 BatEvents: the drinking sound at the player, PLAYERS category, volume 0.7, pitch 1
+			// The drinking sound at the player, PLAYERS category, volume 0.7, pitch 1
 			rider.level().playSound(null, player.blockPosition(), SoundEvents.GENERIC_DRINK, SoundSource.PLAYERS, 0.7F, 1.0F);
 		}
 		else {
@@ -273,7 +272,7 @@ public class ClassicFeatures {
 		}
 	}
 
-	// RM1 GeneralEvents: a snowball in dimension -1 was killed with smoke and a fizz
+	// A snowball in an ultra-warm dimension is removed with smoke and a fizz
 	@SubscribeEvent
 	public void onJoin(EntityJoinLevelEvent event) {
 		if (!snowballMelt || !(event.getEntity() instanceof Snowball) || !(event.getLevel() instanceof ServerLevel))
@@ -300,13 +299,13 @@ public class ClassicFeatures {
 		if (!BossHelper.bossesEnabled)
 			return;
 
-		// RM1 ZombieEvents.onDefend. No baby for the hit that kills the boss.
+		// No baby for the hit that kills the boss.
 		if (zombieBossBabyChance > 0 && target instanceof BossZombie && attacker instanceof LivingEntity
 				&& event.getAmount() < target.getHealth()
 				&& !SpawnHelper.disableBabyZombies() && RND.nextInt(zombieBossBabyChance) == 0)
 			spawnBossBaby((BossZombie) target);
 
-		// RM1 SkeletonEvents.onAttack. The explosion runs after this hit has finished, and its own damage is an
+		// The explosion runs after this hit has finished, and its own damage is an
 		// explosion, so it never sets off another one.
 		if (skeletonBossExplosion > 0 && attacker instanceof BossSkeleton && target instanceof Player
 				&& !((Player) target).isCreative() && !target.isSpectator() && !event.getSource().is(DamageTypeTags.IS_EXPLOSION)) {
@@ -322,7 +321,7 @@ public class ClassicFeatures {
 		if (!(boss.level() instanceof ServerLevel))
 			return;
 		ServerLevel level = (ServerLevel) boss.level();
-		// CHANGED: a husk boss has husk babies (Rough Mobs 1 had zombie and pigman bosses only)
+		// A husk boss has husk babies
 		Zombie baby = (boss instanceof BossHusk ? EntityType.HUSK : EntityType.ZOMBIE).create(level);
 		if (baby == null)
 			return;
@@ -335,10 +334,9 @@ public class ClassicFeatures {
 		baby.setBaby(true);
 		baby.getPersistentData().putBoolean(ZombieFeatures.BOSS_MINION, true);
 		level.addFreshEntity(baby);
-		// DROPPED: the baby zombie pigman for a pigman boss; Rough Mobs 4 has no pigman boss
 	}
 
-	// RM1 mobsImmuneToFire
+	// Classic FireImmune
 	@SubscribeEvent
 	public void onAttack(LivingAttackEvent event) {
 		if (fireImmune.isEmpty())
@@ -350,7 +348,7 @@ public class ClassicFeatures {
 		}
 	}
 
-	// RM1 reduceSpawnRates
+	// Classic ReduceSpawns
 	@SubscribeEvent
 	public void onFinalizeSpawn(MobSpawnEvent.FinalizeSpawn event) {
 		if (spawnReductions.isEmpty())

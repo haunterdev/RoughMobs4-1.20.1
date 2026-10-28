@@ -35,7 +35,7 @@ public class HostileHorseFeatures extends EntityFeatures {
 		super.initConfig();
 
 		horseBurn = RoughConfig.getBoolean(name, "Burn", true, "Set this to false to prevent undead horses from burning in sunlight (as long as they have no rider)");
-		// RM1: horseUndeadBurn mode 0
+		// CHANGED: new in Rough Mobs 4
 		burnWithRider = RoughConfig.getBoolean(name, "BurnWithRider", false, "Set this to true to let undead horses burn in sunlight with a rider on too (needs Burn)");
 		randomRiderChance = RoughConfig.getInteger(name, "RandomRiderChance", 3, 0, MAX, "Chance (1 in X) that a random skeleton or zombie starts riding unmounted hostile horses around it");
 		canDespawn = RoughConfig.getBoolean(name, "CanDespawn", true, "Set to false to prevent undead horses summoned through this mod from despawning");

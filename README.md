@@ -3,8 +3,8 @@
 Harder, smarter vanilla mobs for Minecraft 1.20.1.
 
 Rough Mobs 4 is a 1.20.1 port of [Rough Mobs Revamped](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-revamped) by
-p1ut0nium, which continues Lellson's Rough Mobs and Rough Mobs 2. It also brings back the Rough Mobs 1 and 2 features
-that Revamped left out, as config options.
+p1ut0nium, which continues [Rough Mobs 2](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-2) by Lellson. It adds
+new config options on top, listed under "Changes from the original".
 
 This is a client and server side mod.
 
@@ -34,7 +34,7 @@ This is a client and server side mod.
 - Game Stages and Serene Seasons: equipment and abilities can wait for a game stage, and rough mobs can be limited
   to chosen seasons.
 
-### Classic options (Rough Mobs 1 and 2)
+### Classic options
 
 - Slime on head: a small slime or magma cube jumps onto a player's head, slowing them and causing nausea.
 - Bat vampire: bats latch onto a player and drink their blood.
@@ -44,8 +44,9 @@ This is a client and server side mod.
   an explosion.
 - Creeper particles, so an invisible creeper can still be spotted.
 
-`_ClassicPreset` in the `Classic` section sets the defaults to Rough Mobs Revamped (`rmr`, the default), Rough Mobs 2
-(`rm2`) or Rough Mobs 1 (`rm1`) values.
+`_ClassicPreset` in the `Classic` section sets the default numbers: Rough Mobs Revamped (`rmr`, the default), Rough
+Mobs 2 (`rm2`), or `classic`, which is `rm2` with slimes on heads, bat vampires and its own horse, rider, witch and gear
+numbers.
 
 ### Bosses
 
@@ -79,18 +80,23 @@ The jar lands in `build/libs/`.
 
 ## Credits
 
-- Lellson: Rough Mobs and Rough Mobs 2
-- p1ut0nium: Rough Mobs Revamped
+- p1ut0nium: [Rough Mobs Revamped](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-revamped)
+- Lellson: [Rough Mobs 2](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-2)
 - xy: Rough Mobs 4
 
 ## License
 
-GPL-3.0, the same as Rough Mobs Revamped. See [LICENSE](LICENSE).
+GPL-3.0, the license of Rough Mobs Revamped's source. See [LICENSE](LICENSE).
 
 ## Changes from the original
 
+Compared with Rough Mobs Revamped 2.3.23 for Minecraft 1.12.2:
+
+- Runs on Minecraft 1.20.1.
+- New Classic options: slime on head, bat vampire, snowballs melting in the Nether, fire-immune mobs, reduced spawn
+  rates, boss babies, boss explosion and creeper particles.
+- `_ClassicPreset` switches the default numbers between Revamped, Rough Mobs 2 and `classic`.
 - Bosses can be turned off.
-- The Classic options and `_ClassicPreset`.
 - Old Rough Mobs 2 and Revamped configs can be imported.
 - Husks can become bosses.
 - Boss lightning can be turned off and boss names can carry a title, from Revamped's 1.16.5 version.

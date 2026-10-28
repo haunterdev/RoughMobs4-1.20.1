@@ -178,7 +178,7 @@ public final class LegacyConfigImporter {
 			report.notes.add("the file rolls " + String.join(" and ", bosses) + " bosses; they stay off until BossGlobal._BossGlobal_BossesEnabled = true");
 		// Only a Rough Mobs 2 file has the Rough Mobs 2 key names
 		String preset = String.valueOf(RoughConfig.getValue(RoughConfig.importantKey("Classic", "Preset"))).trim().toLowerCase(Locale.ROOT);
-		if (!report.renamed.isEmpty() && !preset.equals(ClassicPreset.RM2) && !preset.equals(ClassicPreset.RM1))
+		if (!report.renamed.isEmpty() && !preset.equals(ClassicPreset.RM2) && !preset.equals(ClassicPreset.CLASSIC))
 			report.notes.add("a Rough Mobs 2 file: Rough Mobs 2 had numbers it never wrote to its config (blaze push strength 4 and others); "
 					+ "Classic._ClassicPreset = \"rm2\" sets them, and set together with _ClassicImportLegacyConfig the imported values still win");
 		return report;

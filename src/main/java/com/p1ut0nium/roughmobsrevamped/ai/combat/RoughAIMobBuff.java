@@ -20,7 +20,7 @@ public class RoughAIMobBuff extends Goal {
 	protected LivingEntity entity;
 	protected Map<MobEffect, Integer> effects;
 	protected float range;
-	// RM1: witchBoost picked the buffed mobs (hostile only, or all but players); the original buffed monsters
+	// CHANGED: the witch picks the buffed mobs (BuffAllMobs, BuffBlacklist); the original buffed monsters
 	protected Predicate<Mob> targets;
 
 	public RoughAIMobBuff(LivingEntity entity, Map<MobEffect, Integer> effects, float range) {

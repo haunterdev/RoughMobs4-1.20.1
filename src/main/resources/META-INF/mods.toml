@@ -7,7 +7,7 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
-credits="Lellson, author of the original Rough Mobs"
+credits="Lellson, author of Rough Mobs 2"
 logoFile="roughmobs4.png"
 description='''${mod_description}'''
 
