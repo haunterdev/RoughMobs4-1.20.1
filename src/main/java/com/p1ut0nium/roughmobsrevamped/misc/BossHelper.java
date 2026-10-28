@@ -61,7 +61,7 @@ public class BossHelper {
 			return;
 
 		RoughConfig.addCustomCategoryComment("BossGlobal", "Miscellaneous config options which affect all bosses");
-		// CHANGED: new switch in Rough Mobs 4, on by default; the 1.12.2 version always rolled bosses
+		// CHANGED: new switch in Rough Mobs Redux, on by default; the 1.12.2 version always rolled bosses
 		bossesEnabled = RoughConfig.getBoolean("BossGlobal", "_BossesEnabled", true, "Set to false to stop zombies, husks and skeletons spawning as bosses (poisonous fog, bat swarms, boss gear).\nEach mob's BossChance still applies.", true);
 		bossWarning = RoughConfig.getBoolean("BossGlobal", "_SpawnWarning", true, "Enable this to have a chat message warning of a boss spawn.");
 		bossWarningDist = RoughConfig.getInteger("BossGlobal", "_SpawnWarningDistance", 50, 0, Short.MAX_VALUE, "Max bos spawn distance from a player that will trigger a warning.\nUsed for both chat messages and sounds.");
@@ -162,7 +162,7 @@ public class BossHelper {
 
 			if (entity.getType() == EntityType.ZOMBIE)
 				return EntityInit.BOSS_ZOMBIE.get();
-			// CHANGED: new in Rough Mobs 4, the husk champion Rough Mobs Revamped 1.16.5 registered and never spawned
+			// CHANGED: new in Rough Mobs Redux, the husk champion Rough Mobs Revamped 1.16.5 registered and never spawned
 			if (entity.getType() == EntityType.HUSK)
 				return EntityInit.BOSS_HUSK.get();
 			if (entity.getType() == EntityType.SKELETON)

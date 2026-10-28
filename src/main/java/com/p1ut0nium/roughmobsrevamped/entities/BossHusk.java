@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 /*
- * CHANGED: new in Rough Mobs 4. Rough Mobs Revamped 1.16.5 registered a husk_champion (HuskChampionEntity) and never
+ * CHANGED: new in Rough Mobs Redux. Rough Mobs Revamped 1.16.5 registered a husk_champion (HuskChampionEntity) and never
  * spawned it. This boss is built on BossZombie, so the bat swarm, fog, boss babies, gear, title and lightning event
  * are the boss zombie's and the three bosses match. From the vanilla husk: no sun burn, hunger on an empty-handed
  * hit, the husk hurt and step sounds (the idle and death sounds stay the boss ones), no head from a charged creeper,

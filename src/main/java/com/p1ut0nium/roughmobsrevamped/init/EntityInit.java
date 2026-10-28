@@ -26,7 +26,7 @@ public class EntityInit {
 	public static final RegistryObject<EntityType<BossZombie>> BOSS_ZOMBIE = ENTITIES.register("bosszombie",
 			() -> EntityType.Builder.<BossZombie>of(BossZombie::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build(Constants.unique("bosszombie")));
 
-	// CHANGED: new in Rough Mobs 4 (see BossHusk), the size of the vanilla husk
+	// CHANGED: new in Rough Mobs Redux (see BossHusk), the size of the vanilla husk
 	public static final RegistryObject<EntityType<BossHusk>> BOSS_HUSK = ENTITIES.register("bosshusk",
 			() -> EntityType.Builder.<BossHusk>of(BossHusk::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build(Constants.unique("bosshusk")));
 

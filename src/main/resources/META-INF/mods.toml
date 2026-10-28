@@ -8,7 +8,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
 credits="Lellson, author of Rough Mobs 2"
-logoFile="roughmobs4.png"
+logoFile="roughmobsredux.png"
 description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]

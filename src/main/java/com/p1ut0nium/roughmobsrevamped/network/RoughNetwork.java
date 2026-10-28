@@ -12,7 +12,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 /*
- * CHANGED: new in Rough Mobs 4. Rough Mobs Revamped had no network channel, so each client drew the boss fog from its
+ * CHANGED: new in Rough Mobs Redux. Rough Mobs Revamped had no network channel, so each client drew the boss fog from its
  * own copy of the common config. The server sends its fog settings (BossFogMessage) when a player logs in,
  * singleplayer included, over the same path. The config is read once at start, so login is the only time to send.
  */

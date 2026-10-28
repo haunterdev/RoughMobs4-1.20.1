@@ -6,7 +6,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 
 /*
- * CHANGED: new in Rough Mobs 4. An invisible creeper gives off a trail of happy villager particles (creeper
+ * CHANGED: new in Rough Mobs Redux. An invisible creeper gives off a trail of happy villager particles (creeper
  * InvisibleParticles), so a sharp-eyed player can still spot it. No flags, so it runs beside every other goal.
  */
 public class RoughAIInvisibleParticles extends Goal {

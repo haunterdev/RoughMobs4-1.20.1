@@ -52,7 +52,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /*
- * CHANGED: new in Rough Mobs 4. Features Rough Mobs Revamped does not have, as Forge-bus handlers:
+ * CHANGED: new in Rough Mobs Redux. Features Rough Mobs Revamped does not have, as Forge-bus handlers:
  *   slime OnHead / OnHeadNausea   small slimes and magma cubes ride the player's head
  *   bat Vampire                   vanilla bats ride the player and drink half a heart a second
  *   Classic SnowballMeltInNether  snowballs fizz out in ultra-warm dimensions
@@ -61,7 +61,7 @@ import net.minecraftforge.registries.ForgeRegistries;
  *   Classic FireImmune            listed mobs ignore fire damage
  *   Classic ReduceSpawns          cancels a share of natural spawns per mob and dimension
  * The Classic Preset itself is read in RoughApplier.loadConfig. Smaller additions live in their feature class,
- * marked "CHANGED: new in Rough Mobs 4".
+ * marked "CHANGED: new in Rough Mobs Redux".
  */
 public class ClassicFeatures {
 
@@ -106,7 +106,7 @@ public class ClassicFeatures {
 		for (String name : fireImmuneNames) {
 			EntityType<?> type = entityType(name.trim());
 			if (type == null)
-				LOG.warn("Rough Mobs 4: Classic FireImmune entry {} is not an entity", name);
+				LOG.warn("Rough Mobs Redux: Classic FireImmune entry {} is not an entity", name);
 			else
 				fireImmune.add(type);
 		}
@@ -124,7 +124,7 @@ public class ClassicFeatures {
 			}
 			ResourceLocation dimension = parts.length >= 3 ? dimension(parts[2].trim()) : null;
 			if (type == null || percent < 0 || percent > 100 || (parts.length >= 3 && dimension == null)) {
-				LOG.warn("Rough Mobs 4: Classic ReduceSpawns entry {} is not modid:entity;percent[;dimension]", entry);
+				LOG.warn("Rough Mobs Redux: Classic ReduceSpawns entry {} is not modid:entity;percent[;dimension]", entry);
 				continue;
 			}
 			spawnReductions.add(new SpawnReduction(type, percent, dimension));
@@ -189,7 +189,7 @@ public class ClassicFeatures {
 	}
 
 	/*
-	 * CHANGED: new in Rough Mobs 4. Vanilla saves the vehicle a player rides, never the player's passengers, so a
+	 * CHANGED: new in Rough Mobs Redux. Vanilla saves the vehicle a player rides, never the player's passengers, so a
 	 * rider was let go at logout. It is saved with the player (PlayerPersisted, RIDERS) and put back at login. A
 	 * dimension change still leaves it behind: vanilla ejects passengers on teleport.
 	 */
@@ -227,12 +227,12 @@ public class ClassicFeatures {
 			CompoundTag tag = riders.getCompound(i);
 			Entity rider = EntityType.create(tag, player.level()).orElse(null);
 			if (rider == null) {
-				RoughMobs.logger.warn("Rough Mobs 4: could not put back the {} riding {}", tag.getString("id"), player.getGameProfile().getName());
+				RoughMobs.logger.warn("Rough Mobs Redux: could not put back the {} riding {}", tag.getString("id"), player.getGameProfile().getName());
 				continue;
 			}
 			rider.moveTo(player.getX(), player.getY(), player.getZ(), rider.getYRot(), rider.getXRot());
 			if (!player.level().addFreshEntity(rider)) {
-				RoughMobs.logger.warn("Rough Mobs 4: could not put back the {} riding {}", tag.getString("id"), player.getGameProfile().getName());
+				RoughMobs.logger.warn("Rough Mobs Redux: could not put back the {} riding {}", tag.getString("id"), player.getGameProfile().getName());
 				continue;
 			}
 			// With the feature switched off since, the rider is set down next to the player

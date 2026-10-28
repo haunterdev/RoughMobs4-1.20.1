@@ -70,7 +70,7 @@ public class RoughApplier {
 
 	public static final List<EntityFeatures> FEATURES = new ArrayList<EntityFeatures>();
 
-	// CHANGED: new in Rough Mobs 4, the Classic features (see classic.ClassicFeatures)
+	// CHANGED: new in Rough Mobs Redux, the Classic features (see classic.ClassicFeatures)
 	public static final ClassicFeatures CLASSIC = new ClassicFeatures();
 
 	// Work that has to wait until the entity is in the level, run at the end of the next server tick
@@ -120,21 +120,21 @@ public class RoughApplier {
 	 */
 	public void loadConfig() {
 
-		// CHANGED: new in Rough Mobs 4, the Classic Preset (see classic.ClassicPreset) and the legacy config importer
+		// CHANGED: new in Rough Mobs Redux, the Classic Preset (see classic.ClassicPreset) and the legacy config importer
 		// (see classic.LegacyConfigImporter). Both set their values before any option they change is read; the file
 		// is written after the read pass (RoughConfig.writePending).
 		RoughConfig.addCustomCategoryComment("Classic", "Extra features, and the preset that picks the default numbers");
 		String preset = presetName(RoughConfig.getString("Classic", "Preset", ClassicPreset.RMR, "Default numbers to start from: rmr (Rough Mobs Revamped), rm2 (Rough Mobs 2) or classic (rm2 and more, also turns on slimes on heads and bat vampires)\nA change is written into this file at the next start: an option still at the old preset's number takes the new one, an option you changed keeps your value\nBosses are not part of a preset, see _BossGlobal_BossesEnabled", true), "_ClassicPreset");
-		String applied = presetName(RoughConfig.getString("Classic", "PresetApplied", ClassicPreset.RMR, "The preset whose numbers this file holds, set by Rough Mobs 4 after it writes a preset. Leave it as it is", true), "_ClassicPresetApplied");
-		String importName = RoughConfig.getString("Classic", "ImportLegacyConfig", "", "A Rough Mobs 2 roughmobs.cfg or Rough Mobs Revamped 1.12.2 roughmobsrevamped.cfg in the config folder, e.g. roughmobs.cfg\nIts values are copied into this file at the next start, the report goes to config/roughmobs4-import.log, and this option is cleared", true).trim();
+		String applied = presetName(RoughConfig.getString("Classic", "PresetApplied", ClassicPreset.RMR, "The preset whose numbers this file holds, set by Rough Mobs Redux after it writes a preset. Leave it as it is", true), "_ClassicPresetApplied");
+		String importName = RoughConfig.getString("Classic", "ImportLegacyConfig", "", "A Rough Mobs 2 roughmobs.cfg or Rough Mobs Revamped 1.12.2 roughmobsrevamped.cfg in the config folder, e.g. roughmobs.cfg\nIts values are copied into this file at the next start, the report goes to config/roughmobsredux-import.log, and this option is cleared", true).trim();
 
 		if (!RoughConfig.isDefining()) {
 			for (String key : RoughConfig.unknownKeys(ClassicPreset.values(preset)))
-				RoughMobs.logger.warn("Rough Mobs 4: Classic Preset {} names {}, which is not a config option", preset, key);
+				RoughMobs.logger.warn("Rough Mobs Redux: Classic Preset {} names {}, which is not a config option", preset, key);
 			if (!preset.equals(applied)) {
 				List<String> changed = RoughConfig.switchPreset(ClassicPreset.values(applied), ClassicPreset.values(preset));
 				RoughConfig.set(RoughConfig.importantKey("Classic", "PresetApplied"), preset);
-				RoughMobs.logger.info("Rough Mobs 4: Classic Preset {} set {}", preset, changed);
+				RoughMobs.logger.info("Rough Mobs Redux: Classic Preset {} set {}", preset, changed);
 			}
 			// After the preset, so an imported value wins
 			if (!importName.isEmpty())
@@ -152,7 +152,7 @@ public class RoughApplier {
 		if (ClassicPreset.NAMES.contains(preset))
 			return preset;
 		if (!RoughConfig.isDefining())
-			RoughMobs.logger.warn("Rough Mobs 4: Classic {} {} is not rmr, rm2 or classic, using rmr", key, name);
+			RoughMobs.logger.warn("Rough Mobs Redux: Classic {} {} is not rmr, rm2 or classic, using rmr", key, name);
 		return ClassicPreset.RMR;
 	}
 
@@ -167,7 +167,7 @@ public class RoughApplier {
 		AttributeHelper.initAttributeOption();
 
 		SpawnHelper.initSpawnOption();
-		// DROPPED: SpawnHelper.addEntries(); the biome modifier data/roughmobs4/forge/biome_modifier/spawn_entries.json adds the spawns
+		// DROPPED: SpawnHelper.addEntries(); the biome modifier data/roughmobsredux/forge/biome_modifier/spawn_entries.json adds the spawns
 
 		BossHelper.initGlobalBossConfig();
 
@@ -212,7 +212,7 @@ public class RoughApplier {
 			try {
 				task.run();
 			} catch (RuntimeException e) {
-				RoughMobs.logger.error("Rough Mobs 4: a deferred feature task failed", e);
+				RoughMobs.logger.error("Rough Mobs Redux: a deferred feature task failed", e);
 			}
 		}
 	}

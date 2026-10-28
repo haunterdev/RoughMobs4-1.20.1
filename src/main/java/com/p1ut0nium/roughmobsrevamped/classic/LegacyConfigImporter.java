@@ -25,22 +25,22 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 /*
- * CHANGED: new in Rough Mobs 4 (lineage brief item B14). Copies a Rough Mobs 2 roughmobs.cfg or a Rough Mobs
- * Revamped 1.12.2 roughmobsrevamped.cfg into roughmobs4.toml. Both are Forge 1.12 Configuration text: "#" comments,
+ * CHANGED: new in Rough Mobs Redux (lineage brief item B14). Copies a Rough Mobs 2 roughmobs.cfg or a Rough Mobs
+ * Revamped 1.12.2 roughmobsrevamped.cfg into roughmobsredux.toml. Both are Forge 1.12 Configuration text: "#" comments,
  * "name {" ... "}" categories (names with a space are quoted), "B:", "I:", "D:" and "S:" lines "name=value", and
  * lists "S:name <" with one entry per line, closed by ">".
- * Rough Mobs 4 kept Revamped's key names and Revamped kept most of Rough Mobs 2's, so a key maps to the option with
+ * Rough Mobs Redux kept Revamped's key names and Revamped kept most of Rough Mobs 2's, so a key maps to the option with
  * the same name in the same category (1.12 wrote categories in lower case). RENAMED holds the Rough Mobs 2 names
  * Revamped changed. List entries are copied as written: the read pass translates 1.12 names in them
  * (Constants.legacyName, legacyDimension), and the report lists the ones it will translate.
  * Runs in the read pass when Classic _ImportLegacyConfig names a file in the config folder (RoughApplier.loadConfig),
- * then clears that option and writes config/roughmobs4-import.log.
+ * then clears that option and writes config/roughmobsredux-import.log.
  */
 public final class LegacyConfigImporter {
 
-	public static final String LOG_NAME = "roughmobs4-import.log";
+	public static final String LOG_NAME = "roughmobsredux-import.log";
 
-	// Rough Mobs 2 key -> Rough Mobs 4 key, same category. Every other key has the same name in both.
+	// Rough Mobs 2 key -> Rough Mobs Redux key, same category. Every other key has the same name in both.
 	private static final Map<String, String> RENAMED = Map.of(
 			"zombieBossChance", "zombie_BossChance",
 			"zombieBossNames", "zombie_BossNames",
@@ -73,13 +73,13 @@ public final class LegacyConfigImporter {
 
 		public List<String> lines(String source) {
 			List<String> out = new ArrayList<>();
-			out.add("Rough Mobs 4 import of " + source + ", " + LocalDateTime.now().withNano(0));
+			out.add("Rough Mobs Redux import of " + source + ", " + LocalDateTime.now().withNano(0));
 			out.add("values in the file " + entries);
 			section(out, "mapped", mapped);
 			section(out, "renamed from Rough Mobs 2 names", renamed);
 			section(out, "out of range, set to the nearest allowed value", outOfRange);
 			section(out, "not a value the option takes, skipped", invalid);
-			section(out, "unmapped, no Rough Mobs 4 option", unmapped);
+			section(out, "unmapped, no Rough Mobs Redux option", unmapped);
 			section(out, "translated when read, 1.12 names in list entries", translated);
 			section(out, "notes", notes);
 			return out;
@@ -103,7 +103,7 @@ public final class LegacyConfigImporter {
 		Path configDir = FMLPaths.CONFIGDIR.get().toAbsolutePath().normalize();
 		Path file = configDir.resolve(name).normalize();
 		if (!file.startsWith(configDir) || !Files.isRegularFile(file)) {
-			RoughMobs.logger.warn("Rough Mobs 4: Classic _ImportLegacyConfig {} is not a file in the config folder", name);
+			RoughMobs.logger.warn("Rough Mobs Redux: Classic _ImportLegacyConfig {} is not a file in the config folder", name);
 			return;
 		}
 
@@ -112,7 +112,7 @@ public final class LegacyConfigImporter {
 			report = read(file);
 		}
 		catch (IOException | RuntimeException e) {
-			RoughMobs.logger.error("Rough Mobs 4: could not import " + name + ", nothing was changed", e);
+			RoughMobs.logger.error("Rough Mobs Redux: could not import " + name + ", nothing was changed", e);
 			return;
 		}
 		report.values.forEach(RoughConfig::set);
@@ -121,9 +121,9 @@ public final class LegacyConfigImporter {
 			Files.write(configDir.resolve(LOG_NAME), report.lines("config/" + configDir.relativize(file).toString().replace('\\', '/')), StandardCharsets.UTF_8);
 		}
 		catch (IOException e) {
-			RoughMobs.logger.error("Rough Mobs 4: could not write config/" + LOG_NAME, e);
+			RoughMobs.logger.error("Rough Mobs Redux: could not write config/" + LOG_NAME, e);
 		}
-		RoughMobs.logger.info("Rough Mobs 4: imported {} values from {}, {} with no Rough Mobs 4 option, see config/{}",
+		RoughMobs.logger.info("Rough Mobs Redux: imported {} values from {}, {} with no Rough Mobs Redux option, see config/{}",
 				report.mapped.size(), name, report.unmapped.size(), LOG_NAME);
 	}
 
@@ -139,7 +139,7 @@ public final class LegacyConfigImporter {
 			String legacy = entry.category() + "." + entry.key();
 			String key = RENAMED.getOrDefault(entry.key(), entry.key());
 			List<String> path = RoughConfig.findOption(entry.category(), key);
-			// The Classic options are Rough Mobs 4's own; no legacy file had them, and the importer's own key is there
+			// The Classic options are Rough Mobs Redux's own; no legacy file had them, and the importer's own key is there
 			if (path == null || path.get(0).equals("Classic")) {
 				report.unmapped.add(legacy + " = " + shown(entry));
 				continue;

@@ -23,13 +23,13 @@ import net.minecraftforge.fml.config.ModConfig;
  * was called. ForgeConfigSpec has to be fully defined before the file is read, so this wrapper runs in
  * two passes over the same feature code:
  *   1. define pass (mod constructor): every getter defines its value in the spec and returns the default.
- *   2. read pass (the config Loading event): every getter returns the value loaded from roughmobs4.toml.
+ *   2. read pass (the config Loading event): every getter returns the value loaded from roughmobsredux.toml.
  * The key, category and %s rules are the original ones, so the file keeps the 1.12.2 layout.
  * Changes to the file apply on the next restart.
  */
 public class RoughConfig {
 
-	public static final String FILE_NAME = "roughmobs4.toml";
+	public static final String FILE_NAME = "roughmobsredux.toml";
 
 	private static ForgeConfigSpec.Builder builder;
 	private static ForgeConfigSpec spec;
