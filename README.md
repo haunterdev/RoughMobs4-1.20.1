@@ -49,8 +49,9 @@ Client and server side mod.
 
 ### Bosses
 
-Bosses come from Rough Mobs Revamped and are off by default. Set `_BossGlobal_BossesEnabled` to `true` to turn them
-on and `false` to turn them off. `zombie_BossChance` and `skeleton_BossChance` set how often one spawns (1 in X).
+Bosses come from Rough Mobs 2 and Rough Mobs Revamped and are on by default. Set `_BossGlobal_BossesEnabled` to
+`false` to turn them off and `true` to turn them on. `zombie_BossChance` and `skeleton_BossChance` set how often one
+spawns (1 in X).
 
 Boss zombies, husks and skeletons spawn in diamond gear with a name and title, call down lightning, summon bat swarms
 and give off a poison fog.
@@ -88,7 +89,7 @@ GPL-3.0, the same as Rough Mobs Revamped. See [LICENSE](LICENSE).
 
 ## Changes from the original
 
-- Bosses are off by default.
+- Bosses can be turned off.
 - The Classic options and `_ClassicPreset`.
 - Old Rough Mobs 2 and Revamped configs can be imported.
 - Husks can become bosses.

@@ -61,8 +61,8 @@ public class BossHelper {
 			return;
 
 		RoughConfig.addCustomCategoryComment("BossGlobal", "Miscellaneous config options which affect all bosses");
-		// CHANGED: Rough Mobs 4 ships with bosses off; the 1.12.2 version always rolled them
-		bossesEnabled = RoughConfig.getBoolean("BossGlobal", "_BossesEnabled", false, "Set to true to let zombies and skeletons spawn as bosses (poisonous fog, bat swarms, boss gear).\nEach mob's BossChance still applies.", true);
+		// CHANGED: new switch in Rough Mobs 4, on by default; the 1.12.2 version always rolled bosses
+		bossesEnabled = RoughConfig.getBoolean("BossGlobal", "_BossesEnabled", true, "Set to false to stop zombies, husks and skeletons spawning as bosses (poisonous fog, bat swarms, boss gear).\nEach mob's BossChance still applies.", true);
 		bossWarning = RoughConfig.getBoolean("BossGlobal", "_SpawnWarning", true, "Enable this to have a chat message warning of a boss spawn.");
 		bossWarningDist = RoughConfig.getInteger("BossGlobal", "_SpawnWarningDistance", 50, 0, Short.MAX_VALUE, "Max bos spawn distance from a player that will trigger a warning.\nUsed for both chat messages and sounds.");
 		bossWarningSound = RoughConfig.getBoolean("BossGlobal", "_SpawnWarningSound", true, "Play a warning sound when a boss spawns.");
