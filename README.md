@@ -6,7 +6,7 @@ Rough Mobs 4 is a 1.20.1 port of [Rough Mobs Revamped](https://github.com/p1ut0n
 which continues Lellson's Rough Mobs and Rough Mobs 2. It also brings back the Rough Mobs 1 and 2 features that
 Revamped left out, as config options.
 
-Client and server side mod.
+This is a Client and server side mod.
 
 ## Features
 
