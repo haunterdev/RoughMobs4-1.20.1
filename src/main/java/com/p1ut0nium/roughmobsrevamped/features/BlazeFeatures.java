@@ -36,7 +36,7 @@ public class BlazeFeatures extends EntityFeatures {
 		pushAttackersAway = RoughConfig.getBoolean(name, "PushAttackersAway", true, "Set to false to prevent %ss from pushing attackers away");
 		pushStrength = RoughConfig.getFloat(name, "PushStrength", 1.0F, 0F, MAX, "Amount of damage done to attacker when pushed away.");
 		flameTouch = RoughConfig.getBoolean(name, "FlameTouch", true, "Set to false to prevent %ss from igniting entities which touch their hitbox");
-		// CHANGED: new in Rough Mobs Redux, Revamped hard-coded 8 (5 in the classic Classic Preset)
+		// CHANGED: new in Rough Mobs 4, Revamped hard-coded 8 (5 in the classic Classic Preset)
 		flameTouchSeconds = RoughConfig.getInteger(name, "FlameTouchSeconds", 8, 1, MAX, "Seconds an entity burns after touching or hitting a %s");
 		deathExplosionStrength = RoughConfig.getFloat(name, "DeathExplosionStrength", 1.0F, 0F, MAX, "Explosion strength of the explosions, which %ss create on death\nSet to 0 to disable this feature");
 		deathExplosionDestroyBlocks = RoughConfig.getBoolean(name, "DeathExplosionDestroyBlocks", false, "Set to true to enable destoying blocks when a Blaze explodes on death.");

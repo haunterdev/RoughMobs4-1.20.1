@@ -34,7 +34,7 @@ public class EndermiteFeatures extends EntityFeatures {
 		teleportAttacker = RoughConfig.getBoolean(name, "TeleportAttacker", true, "Set this to false to prevent %ss from teleporting attackers away");
 		immunityItem = RoughConfig.getString(name, "ImmunityItem", "minecraft:ender_eye", "If this item is somewhere in the players inventory, the player becomes immune to teleportation\nLeave this empty to disable this feature");
 		witherMobs = RoughConfig.getBoolean(name, "WitherMobs", true, "Set this to false to prevent %ss from applying the wither effect to near entities");
-		// CHANGED: new in Rough Mobs Redux (4 in the classic Classic Preset); Revamped hard-coded 6
+		// CHANGED: new in Rough Mobs 4 (4 in the classic Classic Preset); Revamped hard-coded 6
 		witherRange = RoughConfig.getFloat(name, "WitherRange", 6F, 0F, 32F, "Range in blocks in which %ss wither entities that are not monsters");
 	}
 

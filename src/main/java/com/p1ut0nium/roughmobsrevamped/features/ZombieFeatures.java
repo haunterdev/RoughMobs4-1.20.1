@@ -61,7 +61,7 @@ public class ZombieFeatures extends EntityFeatures {
 			@Override
 			public void addBossFeatures(Mob entity) {
 				if (SpawnHelper.disableBabyZombies() == false) {
-					// CHANGED: a husk boss (new in Rough Mobs Redux) brings baby husks
+					// CHANGED: a husk boss (new in Rough Mobs 4) brings baby husks
 					EntityType<? extends Zombie> minionType = entity instanceof BossHusk ? EntityType.HUSK : EntityType.ZOMBIE;
 					for (int i = 0; i < 4; i++)
 					{

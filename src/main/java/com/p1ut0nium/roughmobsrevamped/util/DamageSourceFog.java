@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 
 /*
  * CHANGED: damage sources are data driven in 1.20.1. The poisonous_fog damage type lives in
- * data/roughmobsredux/damage_type/poisonous_fog.json and bypasses armor through the
+ * data/roughmobs4/damage_type/poisonous_fog.json and bypasses armor through the
  * minecraft:bypasses_armor tag, which is what setDamageBypassesArmor() did.
  */
 public class DamageSourceFog {

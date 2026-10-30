@@ -8,7 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
 /*
- * CHANGED: new in Rough Mobs Redux. The server's boss fog settings (BossHelper), sent at login by RoughNetwork. The client
+ * CHANGED: new in Rough Mobs 4. The server's boss fog settings (BossHelper), sent at login by RoughNetwork. The client
  * keeps the last one in client, and util.handlers.FogEventHandler draws from it. Before the first message and after
  * leaving a server, client is OFF: no boss fog.
  */

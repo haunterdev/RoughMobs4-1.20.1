@@ -11,8 +11,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class Constants {
 
-	public static final String MODID = "roughmobsredux";
-	public static final String MODNAME = "Rough Mobs Redux";
+	public static final String MODID = "roughmobs4";
+	public static final String MODNAME = "Rough Mobs 4";
 	// DROPPED: MODVERSION, MODUPDATE, CLIENTPROXY, SERVERPROXY (mods.toml and DistExecutor replace them)
 	// DROPPED: ENTITY_BOSSZOMBIE, ENTITY_BOSSSKELETON, ENTITY_HOSTILEBAT numeric ids (registry names only in 1.20.1)
 

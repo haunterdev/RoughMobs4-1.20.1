@@ -1,8 +1,8 @@
-# Rough Mobs Redux
+# Rough Mobs 4
 
 Harder, smarter vanilla mobs for Minecraft 1.20.1.
 
-Rough Mobs Redux is a 1.20.1 port of [Rough Mobs Revamped](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-revamped) by
+Rough Mobs 4 is a 1.20.1 port of [Rough Mobs Revamped](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-revamped) by
 p1ut0nium, which continues [Rough Mobs 2](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-2) by Lellson. It adds
 new config options on top, listed under "Changes from the original".
 
@@ -65,7 +65,7 @@ and give off a poison fog.
 
 ## Configuration
 
-Everything is in `config/roughmobsredux.toml`, with Rough Mobs Revamped's option names.
+Everything is in `config/roughmobs4.toml`, with Rough Mobs Revamped's option names.
 
 To use an old config, put a Rough Mobs 2 `roughmobs.cfg` or a Rough Mobs Revamped 1.12.2 `roughmobsrevamped.cfg` in
 `config/` and set `_ClassicImportLegacyConfig` to its file name.
@@ -82,7 +82,7 @@ The jar lands in `build/libs/`.
 
 - p1ut0nium: [Rough Mobs Revamped](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-revamped)
 - Lellson: [Rough Mobs 2](https://www.curseforge.com/minecraft/mc-mods/rough-mobs-2)
-- xy: Rough Mobs Redux
+- xy: Rough Mobs 4
 
 ## License
 

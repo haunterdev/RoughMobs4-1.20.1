@@ -188,7 +188,7 @@ public class FogEventHandler {
 		for (Mob entity : entities) {
 
 			// Only test bosses in the list, ignore all other entity types
-			// CHANGED: the husk boss is new in Rough Mobs Redux
+			// CHANGED: the husk boss is new in Rough Mobs 4
 			if (entity.getClass() == BossZombie.class || entity.getClass() == BossHusk.class || entity.getClass() == BossSkeleton.class) {
 
 				float entityDistance = player.distanceTo(entity);

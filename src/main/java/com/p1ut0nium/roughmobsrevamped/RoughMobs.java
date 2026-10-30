@@ -1,5 +1,5 @@
 /*
- * Rough Mobs Redux
+ * Rough Mobs 4
  * A 1.20.1 port of Rough Mobs Revamped by p1ut0nium_94, itself a revamp of Rough Mobs 2 by Lellson
  * Original Author: Lellson
  * This version is for Minecraft 1.20.1

@@ -51,7 +51,7 @@ public class EndermanFeatures extends EntityFeatures {
 
 		blindChance = RoughConfig.getInteger(name, "BlindChance", 3, 0, MAX, "Chance (1 in X) that an %s applies the blindness effect to its target\nSet to 0 to disable this feature");
 		blindDuration = RoughConfig.getInteger(name, "BlindDuration", 200, 1, MAX, "Duration in ticks of the applied blindness effect (20 ticks = 1 second)");
-		// CHANGED: new in Rough Mobs Redux
+		// CHANGED: new in Rough Mobs 4
 		blindOrNausea = RoughConfig.getBoolean(name, "BlindOrNausea", false, "Set this to true to make each BlindChance hit give blindness or nausea at random");
 
 		stealItemChance = RoughConfig.getInteger(name, "StealItemChance", 3, 0, MAX, "Chance (1 in X) that an %s steals the targets held or equipped item to drop it on the ground\nSet to 0 to disable this feature");

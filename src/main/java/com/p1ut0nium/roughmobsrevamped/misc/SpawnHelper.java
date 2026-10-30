@@ -37,7 +37,7 @@ public class SpawnHelper {
 
 	/*
 	 * CHANGED: EntityRegistry.addSpawn/removeSpawn are gone. Spawn entries are applied by a biome modifier,
-	 * data/roughmobsredux/forge/biome_modifier/spawn_entries.json, which reads ENTRIES when the server
+	 * data/roughmobs4/forge/biome_modifier/spawn_entries.json, which reads ENTRIES when the server
 	 * builds its biomes.
 	 */
 	public static final DeferredRegister<Codec<? extends BiomeModifier>> BIOME_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, Constants.MODID);

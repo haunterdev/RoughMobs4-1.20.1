@@ -57,14 +57,14 @@ public class WitchFeatures extends EntityFeatures {
 
 		applyEffectsRange = RoughConfig.getFloat(name, "ApplyEffectsRange", 10, 0, MAX, "Range in each direction from the %ses position in which allied mobs get buffed\nSet to 0 to disable this feature");
 		applyEffectNames = RoughConfig.getStringArray(name, "ApplyEffectsNames", Constants.DEFAULT_WITCH_BUFFS, "Potion effects which may be added to nearby mobs\nFormat: effect;amplifier");
-		// CHANGED: new in Rough Mobs Redux
+		// CHANGED: new in Rough Mobs 4
 		buffAllMobs = RoughConfig.getBoolean(name, "BuffAllMobs", false, "Set this to true to let %ses buff every mob around them (animals and villagers too), not only monsters");
 		buffBlacklist = RoughConfig.getStringArray(name, "BuffBlacklist", new String[0], "Entities %ses never buff\nFormat: modid:entity");
 
 		lingeringChance = RoughConfig.getInteger(name, "LingeringChance", 5, 0, MAX, "Chance (1 in X) for a %ses thrown potion to become a lingering potion\nSet to 0 to disable this feature");
 
 		batsOnDeath = RoughConfig.getInteger(name, "BatsOnDeath", 5, 0, MAX, "Amount of bats which spawn on %ses death\nSet to 0 to disable this feature");
-		// CHANGED: new in Rough Mobs Redux (the classic Classic Preset sets 3 plus up to 4, so 3 to 7)
+		// CHANGED: new in Rough Mobs 4 (the classic Classic Preset sets 3 plus up to 4, so 3 to 7)
 		batsOnDeathRandom = RoughConfig.getInteger(name, "BatsOnDeathRandom", 0, 0, MAX, "Up to this many extra bats on top of BatsOnDeath, a random number each death");
 	}
 
@@ -102,7 +102,7 @@ public class WitchFeatures extends EntityFeatures {
 			if (key != null && ForgeRegistries.ENTITY_TYPES.containsKey(key))
 				buffBlacklistTypes.add(ForgeRegistries.ENTITY_TYPES.getValue(key));
 			else
-				RoughMobs.logger.warn("Rough Mobs Redux: witch BuffBlacklist entry {} is not an entity", entityName);
+				RoughMobs.logger.warn("Rough Mobs 4: witch BuffBlacklist entry {} is not an entity", entityName);
 		}
 	}
 

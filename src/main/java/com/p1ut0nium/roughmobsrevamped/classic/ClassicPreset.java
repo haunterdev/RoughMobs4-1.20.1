@@ -7,7 +7,7 @@ import java.util.Map;
 import com.p1ut0nium.roughmobsrevamped.config.RoughConfig;
 
 /*
- * CHANGED: new in Rough Mobs Redux. The Classic Preset option (Classic _ClassicPreset): other sets of default numbers.
+ * CHANGED: new in Rough Mobs 4. The Classic Preset option (Classic _ClassicPreset): other sets of default numbers.
  *   rmr      Rough Mobs Revamped defaults, nothing changed
  *   rm2      Rough Mobs 2: blaze push 4 and block damage on death, zombie pigmen angry on touch
  *   classic  rm2 plus other horse, rider, witch, slime, enderman, endermite and gear numbers, and the
